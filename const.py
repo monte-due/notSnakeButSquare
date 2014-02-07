@@ -1,0 +1,23 @@
+import ColorSet
+FPS=500
+OFFSET=3
+MAXX,MAXY=1200,600
+pointFontDim=30
+wclFontDim=36
+pointFont=None
+wclFont=None
+playerDimX=60
+playerDimY=60
+backgroundColor=ColorSet.BLACK
+playerPntStart=0
+danno=10
+gameOverX=420
+gameOverY=281
+new=1000
+dimWarn=(playerDimX+playerDimY)/4
+cure=danno/2
+maxObs=20
+fireUP="i"
+fireDW="k"
+fireDX="l"
+fireSX="j"
