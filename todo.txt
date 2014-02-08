@@ -1,0 +1,3 @@
+riordinare il codice, dividere in più file, rivedere gestione dei file
+aggiungere suono allo sparo
+qiando completato merge con master e nuovo ramo di sviluppo
