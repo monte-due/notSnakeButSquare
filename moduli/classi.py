@@ -178,16 +178,21 @@ class Proiettile(object):
 			Player.y=0
 			Player.rect=pygame.Rect(Player.x,Player.y,Player.dimx,Player.dimy)
 			Player.pnt-=1
-
-	def shot(self,Enemy,Player,surface):
+	def checkInObstacoleList(self,obsList):
+		for x in obsList:
+			if self.rect.colliderect(x.rect):
+				return True
+	def shot(self,Enemy,Player,obsList,surface):
+		ok=True
 		if self.Mdir==const.fireUP:
-			while self.y>0 and not( self.rect.colliderect(Enemy.rect) ):
+			while self.y>0 and ok:
 				self.y-=10
 				self.rect=pygame.Rect(self.x,self.y,self.dimx,self.dimy)
 				self.printOnScreen(surface)
 				self.checkCollide(Enemy,Player)
 				self.danno(Enemy,Player)
-
+				if self.rect.colliderect(Enemy.rect) or (self.checkInObstacoleList(obsList)):
+					ok=False
 		elif self.Mdir==const.fireDW:
 			while self.y<const.MAXY and  not( self.rect.colliderect(Enemy.rect) ):
 				self.y+=10

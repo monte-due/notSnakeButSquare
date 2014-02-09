@@ -25,24 +25,24 @@ def mostraPunti(player1,player2,surface):
 def printObstacole(lista,surface):
 	for x in lista:
 		x.printOnScreen(surface)	
-def shotAnimation(player1,nemico,surface):
+def shotAnimation(player1,nemico,obsList,surface):
 	pressed=pygame.key.get_pressed()
 
 	if pressed[pygame.K_i]:
 		raggioDellaMorte=classi.Proiettile(player1,"i")
-		raggioDellaMorte.shot(nemico,player1,surface)
+		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_j]:
 		raggioDellaMorte=classi.Proiettile(player1,"j")
-		raggioDellaMorte.shot(nemico,player1,surface)
+		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_k]:
 		raggioDellaMorte=classi.Proiettile(player1,"k")
-		raggioDellaMorte.shot(nemico,player1,surface)
+		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_l]:
 		raggioDellaMorte=classi.Proiettile(player1,"l")
-		raggioDellaMorte.shot(nemico,player1,surface)
+		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 def singlePlayer():
 	
@@ -89,9 +89,10 @@ def singlePlayer():
 		player1.printOnScreen(surface)
 		nemico.printOnScreen(surface)
 
-		shotAnimation(player1,nemico,surface)
+		shotAnimation(player1,nemico,obstacoleList,surface)
 
 		
 		pygame.display.update()
 		fpsClock.tick(const.FPS)
 		secondCounter+=1
+singlePlayer()
