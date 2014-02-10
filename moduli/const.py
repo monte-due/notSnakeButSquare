@@ -21,3 +21,5 @@ fireUP="i"
 fireDW="k"
 fireDX="l"
 fireSX="j"
+numOfUsedColor=4
+enemyDim=playerDimY/2

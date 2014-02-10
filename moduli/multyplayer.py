@@ -1,6 +1,6 @@
 import pygame,sys,time,random,os
 import ColorSet,welcomeScreen,const
-import classi,function
+import newClass,function
 from pygame.locals import *
 pygame.init()
 pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
