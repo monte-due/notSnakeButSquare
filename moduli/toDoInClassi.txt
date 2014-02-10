@@ -1,0 +1,32 @@
+PLayer 
+	cordinate,dimensioni,colore,rettangolo
+	cambia colore
+	cambia posizione
+	stampa a schermo -
+	controlla collisione con nemico
+	calcola il danno
+	controlla contatto con ostacolo
+	controlla se ha perso
+
+Nemico
+	cordinante,dimensione,colore,rettangolo
+	genera nuovo nemico
+	stampa a schermo -
+
+ostacolo
+	cordinare,dimensione,colore,rettangolo (cordinate e dimensione diendono al giocatore)
+
+	stampa a schermo -
+	genera
+
+Proiettile 
+		stampa a schermo -
+		controlla collisione con nemico
+		calcola danno
+		sparo con controllo di collisione di un ostacolo
+
+
+padre di player e priettile
+	stampa a schermo
+	controlla collisione con nemico(clacolo del danno incluso)
+	controlla game over

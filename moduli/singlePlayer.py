@@ -1,6 +1,6 @@
 import pygame,sys,time,random,os
 import ColorSet,const
-import classi
+import newClass
 from pygame.locals import *
 pygame.init()#inizlializzo pygame
 pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
@@ -25,23 +25,24 @@ def mostraPunti(player1,player2,surface):
 def printObstacole(lista,surface):
 	for x in lista:
 		x.printOnScreen(surface)	
+
 def shotAnimation(player1,nemico,obsList,surface):
 	pressed=pygame.key.get_pressed()
 
 	if pressed[pygame.K_i]:
-		raggioDellaMorte=classi.Proiettile(player1,"i")
+		raggioDellaMorte=newClass.Proiettile(player1,"i")
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_j]:
-		raggioDellaMorte=classi.Proiettile(player1,"j")
+		raggioDellaMorte=newClass.Proiettile(player1,"j")
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_k]:
-		raggioDellaMorte=classi.Proiettile(player1,"k")
+		raggioDellaMorte=newClass.Proiettile(player1,"k")
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_l]:
-		raggioDellaMorte=classi.Proiettile(player1,"l")
+		raggioDellaMorte=newClass.Proiettile(player1,"l")
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 def singlePlayer():
@@ -49,14 +50,14 @@ def singlePlayer():
 	#genero gli ostacoli e li stampo
 	obstacoleList=[]
 	for x in range(1,const.maxObs):
-		x=classi.Obstacole()
-		x.generate()
+		x=newClass.Obstacole()
+		x.generateNew()
 		obstacoleList.append(x)
 	print obstacoleList
 
 	#creo il giocatore ed il nemico
-	player1=classi.Player(30,30,1)
-	nemico=classi.Enemy()
+	player1=newClass.Player(30,30,1)
+	nemico=newClass.Enemy()
 
 	#contatore dei secondi prima di generare un nuovo nemico
 	secondCounter=0
@@ -75,13 +76,13 @@ def singlePlayer():
 
 		
 		player1.changeColor(gameType)
-		player1.move(gameType)
-		player1.checkCollide(nemico)
-		player1.danno(nemico)
+		player1.move(player1,nemico,obstacoleList,gameType)
+		player1.checkCollide(player1,nemico,obstacoleList)
+		#player1.danno(nemico)
 		player1.checkGameOver()
 
-		for x in obstacoleList:
-			player1.checkCrash(x)
+		#for x in obstacoleList:
+			#player1.checkCrash(x)
 
 		surface.fill(const.backgroundColor)
 		printObstacole(obstacoleList,surface)
@@ -95,4 +96,3 @@ def singlePlayer():
 		pygame.display.update()
 		fpsClock.tick(const.FPS)
 		secondCounter+=1
-singlePlayer()
