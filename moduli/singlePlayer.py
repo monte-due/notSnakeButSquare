@@ -78,8 +78,13 @@ def singlePlayer():
 
 		
 		player1.changeColor(gameType)
-		player1.move(player1,nemico,obstacoleList,gameType)
+		player1.move(gameType)
 		player1.checkCollide(player1,nemico,obstacoleList)
+		"""
+		the checkCollide method control that the player, or is shot,
+		is tuching an obstacol or the enemy, if is True it calculates the damneg
+		check that the player don't walk above the obstacole 
+		"""
 		player1.checkGameOver()
 
 		#parte "grafica"
@@ -90,6 +95,7 @@ def singlePlayer():
 		nemico.printOnScreen(surface)
 
 		shotAnimation(player1,nemico,obstacoleList,surface)
+		"""at th inside of the shot method there is the check of the collide of the shot"""
 
 		
 		pygame.display.update()

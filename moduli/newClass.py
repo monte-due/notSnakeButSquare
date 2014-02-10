@@ -7,6 +7,7 @@ from welcomeScreen import *
 pygame.init()
 pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
 #SGiocatore coprende i metodicomuni di player e proiettile
+"""super classi"""
 class SGiocatore:
 	def printOnScreen(self,surface):
 		pygame.draw.rect(surface,self.color,self.rect)
@@ -86,6 +87,7 @@ class SNemico:
 		return x,y
 """FINE SUPER CLASSI"""
 
+"""classi del giocaore"""
 #classe del giocatore
 class Player(SGiocatore):
 	def __init__(self,x,y,num):
@@ -116,7 +118,7 @@ class Player(SGiocatore):
 				if pressed[pygame.K_LEFT]:self.color=YELLOW
 				if pressed[pygame.K_RIGHT]:self.color=WHITE
 		self.rect=pygame.Rect(self.x,self.y,self.dimx,self.dimy)
-	def move(self,player,enemy,obsList,gameType):
+	def move(self,gameType):
 		pressed=pygame.key.get_pressed()
 		if gameType==1:
 			if pressed[pygame.K_w]and(self.rect.y>=0):self.y-=OFFSET
