@@ -1,4 +1,4 @@
-import pygame,sys,time,random,os
+import pygame,random,os
 from pygame.locals import *
 from ColorSet import *
 from const import *
@@ -78,7 +78,8 @@ class SNemico:
 		return newColor
 	def generateNewXY(self,obsList):
 		random.seed()
-		x,y=0,0
+		x=random.randint(0,MAXX-self.dimx)
+		y=random.randint(0,MAXY-self.dimy)
 		self.rect=pygame.Rect(x,y,25,25)
 		while self.checkInObstacoleList(obsList):
 			x=random.randint(0,MAXX-self.dimx)

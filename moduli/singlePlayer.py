@@ -32,19 +32,19 @@ def shotAnimation(player1,nemico,obsList,surface):
 	pressed=pygame.key.get_pressed()
 
 	if pressed[pygame.K_i]:
-		raggioDellaMorte=Proiettile(player1,"i")
+		raggioDellaMorte=Proiettile(player1,fireUP)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_j]:
-		raggioDellaMorte=Proiettile(player1,"j")
+		raggioDellaMorte=Proiettile(player1,fireSX)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_k]:
-		raggioDellaMorte=Proiettile(player1,"k")
+		raggioDellaMorte=Proiettile(player1,fireDW)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 	if pressed[pygame.K_l]:
-		raggioDellaMorte=Proiettile(player1,"l")
+		raggioDellaMorte=Proiettile(player1,fireDX)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
 def singlePlayer():
