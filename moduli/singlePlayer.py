@@ -14,7 +14,7 @@ pygame.mixer.music.load(os.path.join("src/snd/mp3/","base.mp3"))
 pygame.mixer.music.play(-1)
 gameType=1
 
-def mostraPunti(player1,player2,surface):
+def mostraPunti(player1,player2,surface):#stampa aschermo i punti del giocatore
 	font=pygame.font.Font(pointFont,pointFontDim)
 	pointDisplayG1=font.render("punti G"+str(player1.num)+": "+str(player1.pnt),1,GREEN)
 	pointDisplayG1Postion=pointDisplayG1.get_rect()
@@ -24,26 +24,26 @@ def mostraPunti(player1,player2,surface):
 	surface.blit(pointDisplayG1,pointDisplayG1Postion)
 	surface.blit(pointDisplayG2,pointDisplayG2Postion)
 
-def printObstacole(lista,surface):
+def printObstacole(lista,surface):#stampa a schermo gli ostacoli
 	for x in lista:
 		x.printOnScreen(surface)	
 
-def shotAnimation(player1,nemico,obsList,surface):
+def shotAnimation(player1,nemico,obsList,surface):#spara il proiettile
 	pressed=pygame.key.get_pressed()
 
 	if pressed[pygame.K_i]:
 		raggioDellaMorte=Proiettile(player1,fireUP)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
-	if pressed[pygame.K_j]:
+	elif pressed[pygame.K_j]:
 		raggioDellaMorte=Proiettile(player1,fireSX)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
-	if pressed[pygame.K_k]:
+	elif pressed[pygame.K_k]:
 		raggioDellaMorte=Proiettile(player1,fireDW)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
-	if pressed[pygame.K_l]:
+	elif pressed[pygame.K_l]:
 		raggioDellaMorte=Proiettile(player1,fireDX)
 		raggioDellaMorte.shot(nemico,player1,obsList,surface)
 			
@@ -51,7 +51,7 @@ def singlePlayer():
 	
 
 	#creo il giocatore ed il nemico
-	player1=Player(30,30,1)
+	player1=Player(0,0,1)
 	nemico=Enemy()
 	#genero gli ostacoli
 	obstacoleList=[]
@@ -78,10 +78,12 @@ def singlePlayer():
 
 		
 		player1.changeColor(gameType)
-		player1.move(gameType)
-		player1.checkCollide(player1,nemico,obstacoleList)
+		player1.move(player1,nemico,obstacoleList,gameType)
+		
+		
 		"""
-		the checkCollide method control that the player, or is shot,
+		after that the player had move 
+		the checkCollide method(called insede the move) control that the player, or is shot,
 		is tuching an obstacol or the enemy, if is True it calculates the damneg
 		check that the player don't walk above the obstacole 
 		"""
@@ -93,9 +95,9 @@ def singlePlayer():
 		mostraPunti(player1,player1,surface)
 		player1.printOnScreen(surface)
 		nemico.printOnScreen(surface)
-
 		shotAnimation(player1,nemico,obstacoleList,surface)
 		"""at th inside of the shot method there is the check of the collide of the shot"""
+		
 
 		
 		pygame.display.update()
